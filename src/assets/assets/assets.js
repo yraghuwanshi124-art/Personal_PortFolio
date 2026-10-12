@@ -35,43 +35,42 @@ export const aboutInfo = [
   }
 ];
 
-
 export const skills = [
   {
     icon: FaCode,
     title: "Programming Languages",
     description:
-      "C, C++, Python, Java, and JavaScript with a strong focus on programming fundamentals.",
+      "Java JavaScript and Python, with a focus on programming fundamentals and software development.",
   },
   {
     icon: FaReact,
     title: "Frontend Development",
     description:
-      "Building modern and responsive interfaces using HTML, CSS, React, and Tailwind CSS.",
+      "Building interactive user interfaces and web applications using React.js Tailwind CSS and Bootstrap.",
   },
   {
     icon: FaNodeJs,
     title: "Backend Development",
     description:
-      "Learning Node.js, Express.js, and REST APIs to build full-stack web applications.",
+      "Developing backend applications using Java, Spring Boot, Spring Framework, Node.js, Express.js, and REST APIs.",
+  },
+  {
+    icon: FaDatabase,
+    title: "Databases",
+    description:
+      "Working with MySQL and MongoDB to store, manage, and retrieve application data.",
   },
   {
     icon: FaCode,
-    title: "DSA & Problem Solving",
+    title: "DSA & OOP",
     description:
-      "Practicing Data Structures, Algorithms, and problem-solving to improve coding skills.",
-  },
-  {
-    icon: FaPaintBrush,
-    title: "Web Design",
-    description:
-      "Creating clean, modern, and responsive websites using Tailwind CSS and modern design principles.",
+      "Practicing Data Structures and Algorithms and applying Object-Oriented Programming concepts to problem-solving.",
   },
   {
     icon: FaTools,
     title: "Tools & Technologies",
     description:
-      "Working with Git, GitHub, VS Code, Vite, npm, and other modern development tools.",
+      "Using Git and GitHub for version control and source code management.",
   },
 ];
 
@@ -79,77 +78,96 @@ export const skills = [
 
 export const projects = [
   {
-    title: "Stone Paper Scissors",
+    title: "Zerodha - Trading Platform",
     image: projectImg1,
     description:
-      "A simple and interactive Stone Paper Scissors game built with HTML, CSS, and JavaScript where users can play against the computer with instant results.",
-    tech: ["HTML", "CSS", "JavaScript"],
+      "A full-stack MERN trading platform featuring secure JWT authentication, a trading dashboard, holdings, positions, and buy/sell order functionality with REST API integration and cloud deployment.",
+    tech: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB Atlas",
+      "Bootstrap",
+      "JWT",
+      "REST APIs",
+    ],
+    github: "https://github.com/honeyAswani/trading-platform",
+    demo: "https://trading-platform-uoc8.vercel.app",
   },
-
   {
-    title: "Motivation Quote Generator",
+    title: "WanderLust - Travel Listing Platform",
     image: projectImg2,
     description:
-      "A motivational quote generator built with JavaScript that displays inspiring quotes with a clean and interactive user interface.",
-    tech: ["HTML", "CSS", "JavaScript"],
+      "An Airbnb-inspired full-stack travel listing platform with secure authentication, property listing management, image uploads through Cloudinary, and reviews and ratings.",
+    tech: [
+      "Node.js",
+      "Express.js",
+      "MongoDB Atlas",
+      "EJS",
+      "Cloudinary",
+      "Passport.js",
+    ],
+    github: "https://lnkd.in/gCH9UAsA",
+    demo: "https://lnkd.in/gSmccnPp",
   },
-
   {
-    title: "Stopwatch",
+    title: "SkyLume - Weather Application",
     image: projectImg3,
     description:
-      "A functional stopwatch application built with JavaScript that allows users to start, pause, reset, and track elapsed time with an interactive interface.",
-    tech: ["React","Tailwind CSS"],
+      "A responsive React weather application that uses the OpenWeather API to display current weather and location-based conditions, with dynamic weather visuals and loading and error states.",
+    tech: [
+      "React.js",
+      "Vite",
+      "Material UI",
+      "OpenWeather API",
+      "CSS",
+    ],
+    github: "https://lnkd.in/gy-tkhgc",
+    demo: "https://lnkd.in/gs56yr7b",
   },
-
   {
-    title: "To-Do List",
+    title: "BlogNest - Blogging Platform",
     image: projectImg4,
     description:
-      "A responsive To-Do List application built with React that allows users to add, manage, and organize daily tasks with a clean and user-friendly interface.",
-    tech: ["React", "JavaScript", "Tailwind CSS"],
-  },
-
-  {
-    title: "Amazon Clone",
-    image: projectImg5,
-    description:
-      "A responsive Amazon-inspired e-commerce website built with HTML and CSS that recreates the layout, navigation, product sections, and overall shopping interface.",
-    tech: ["HTML", "CSS"],
-  },
-
-  {
-    title: "Weather App",
-    image: projectImg6,
-    description:
-      "A responsive weather application built with React that fetches real-time weather data from an API and displays temperature, humidity, and wind speed with a clean user interface.",
-    tech: ["React", "JavaScript", "API", "Tailwind CSS"],
+      "A Java and Spring Boot blogging platform featuring blog post creation, editing, and deletion, database persistence using Spring Data JPA, dynamic pages with Thymeleaf, and authentication and authorization.",
+    tech: [
+      "Java",
+      "Spring Boot",
+      "Spring MVC",
+      "Spring Data JPA",
+      "MySQL",
+      "Thymeleaf",
+      "Maven",
+    ],
+    github: "https://lnkd.in/d5X5uDGe",
+    demo: "https://lnkd.in/dMxquAhU",
   },
 ];
 
+
 export const workData = [
   {
-    role: "Frontend Developer Intern",
-    company: "CodeAlpha",
-    duration: "2026 - Present",
+    role: "DSA & Problem Solving",
+    company: "LeetCode",
+    duration: "Ongoing",
     description:
-      "Working on frontend development projects and building responsive, interactive web interfaces using modern web technologies.",
+      "Solved 150+ coding problems on LeetCode, strengthening problem-solving skills and understanding of Data Structures and Algorithms.",
+    color: "blue"
+  },
+  {
+    role: "Backend Development",
+    company: "Personal Projects",
+    duration: "Ongoing",
+    description:
+      "Building full-stack applications using Java, Spring Boot, Node.js, Express.js, and databases such as MySQL and MongoDB.",
     color: "purple"
   },
   {
-    role: "SoftWare Developer Intern",
-    company: "IQ Path",
-    duration: "2026 - Present",
+    role: "Full-Stack Development",
+    company: "Project Experience",
+    duration: "Ongoing",
     description:
-      "Working on React-based projects and building responsive user interfaces using React, JavaScript, and Tailwind CSS.",
+      "Developed projects including a MERN-based trading platform, a travel listing platform, a weather application, and a Java Spring Boot blogging platform.",
     color: "pink"
-  },
-  {
-    role: "C++ & DSA Learner",
-    company: "Self Learning",
-    duration: "2026 - Present",
-    description:
-      "Learning Data Structures and Algorithms in C++ and solving coding problems to strengthen problem-solving and programming skills.",
-    color: "blue"
   }
 ];

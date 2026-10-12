@@ -19,22 +19,22 @@ function Hero() {
 
                     <h1 className="text-white text-4xl font-bold md:text-6xl mb-4">
                         Hi, I'm{" "}
-                        <span className="text-green-500">
-                            Yash Raghuwanshi
+                        <span className="text-purple-500">
+                            Honey Aswani
                         </span>
                     </h1>
 
                     {/* Typing Animation */}
-                    <h2 className="text-2xl md:text-4xl font-semibold mb-6 text-green-500">
+                    <h2 className="text-2xl md:text-4xl font-semibold mb-6 text-purple-500">
                         <TypeAnimation
                             sequence={[
                                 "Aspiring Full Stack Developer",
                                 2000,
-                                "React Developer",
-                                2000,
-                                "MERN Stack Developer",
+                                "Mern Stack Developer",
                                 2000,
                                 "Frontend Developer",
+                                2000,
+                                "Bakend Developer",
                                 2000,
                             ]}
                             wrapper="span"
@@ -51,16 +51,16 @@ function Hero() {
                     <div className="flex space-x-4">
 
                         <a
-                            className="px-6 py-3 bg-green-500 rounded-lg font-medium
-                            hover:bg-green-700 transition duration-300"
+                            className="px-6 py-3 bg-purple-500 rounded-lg font-medium
+                            hover:bg-purple-700 transition duration-300"
                             href="#project"
                         >
                             View Work
                         </a>
 
                         <a
-                            className="px-6 py-3 bg-green-500 rounded-lg font-medium
-                            hover:bg-green-700 transition duration-300"
+                            className="px-6 py-3 bg-purple-500 rounded-lg font-medium
+                            hover:bg-purple-700 transition duration-300"
                             href="#contacts"
                         >
                             Contact Me
@@ -75,7 +75,7 @@ function Hero() {
 
                     <div className="relative w-64 h-64 md:w-80 md:h-80">
 
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500 to-green-300">
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-purple-300">
 
                             <motion.img
                                 animate={{ y: [0, -25, 0] }}

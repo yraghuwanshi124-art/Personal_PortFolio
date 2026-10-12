@@ -13,7 +13,7 @@ const Skills = () => {
             className='py-20 bg-dark-200'
         >
             <div className='text-center container mx-auto px-6'>
-                <h2 className='text-center text-3xl font-bold mb-4'>My<span className='text-green-600 ml-2'>Skills</span></h2>
+                <h2 className='text-center text-3xl font-bold mb-4'>My<span className='text-purple-600 ml-2'>Skills</span></h2>
                 <p className='text-center text-gray-500 max-w-2xl mx-auto font-bold mb-20'>Get to know about my background and passion</p>
 
                 <motion.div
@@ -31,7 +31,7 @@ const Skills = () => {
                                     className='bg-gray-800 rounded-2xl p-4 h-50
       transition-transform duration-300 hover:-translate-y-2 cursor-pointer'
                                 >
-                                    <div className="text-green-500 text-4xl mb-3">
+                                    <div className="text-purple-500 text-4xl mb-3">
                                         <data.icon />
                                     </div>
 

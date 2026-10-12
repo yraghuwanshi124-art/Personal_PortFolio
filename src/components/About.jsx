@@ -17,7 +17,7 @@ const About = () => {
         >
 
             <div className='container mx-0 px-6'>
-                <h2 className='text-center text-3xl font-bold mb-4'>About <span className='text-green-600'>Me</span></h2>
+                <h2 className='text-center text-3xl font-bold mb-4'>About <span className='text-purple-600'>Me</span></h2>
                 <p className='text-center text-gray-500 max-w-2xl mx-auto font-bold'>Get to know about my background and passion</p>
 
                 <div className='flex flex-col md:flex-row  gap-12 mt-20'>
@@ -41,32 +41,35 @@ const About = () => {
                             <h3 className='text-2xl font-semibold mb-6 ml-50 '>
                                 My Journey
                             </h3>
-                            <p className='text-gray-400 mb-6 '>My journey in development started with a curiosity to
-                                understand how websites and applications work.
-                                I began by learning programming fundamentals
-                                and gradually explored HTML, CSS, JavaScript, React,
-                                and modern web development. Building small projects
-                                helped me turn what I learned into practical skills
+                            <p className='text-gray-400 mb-6'>
+                                My journey in software development started with an interest
+                                in programming and problem-solving. I primarily work with
+                                Java and Spring Boot, along with hands-on experience in
+                                React.js and the MERN stack. Through building full-stack
+                                projects, I have gained practical experience in developing
+                                web applications, designing REST APIs, and working with
+                                databases like MySQL and MongoDB.
                             </p>
 
-                            <p className='text-gray-400 mb-6 '>
-                                Currently, I’m expanding my journey toward full-stack development
-                                by learning Node.js and backend technologies while continuing
-                                to improve my problem-solving skills through DSA.
-                                I enjoy building projects, exploring new technologies,
-                                and continuously improving my skills as a developer.
+                            <p className='text-gray-400 mb-6'>
+                                Currently, I’m strengthening my backend development skills
+                                and exploring system design while improving my problem-solving
+                                abilities through Data Structures and Algorithms. I have solved
+                                150+ problems on LeetCode and enjoy learning new technologies,
+                                building practical projects, and continuously growing as a
+                                software developer.
                             </p>
 
-                            
+
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
-                               {aboutInfo.map((data, index) => (
+                                {aboutInfo.map((data, index) => (
                                     <div
                                         key={index}
                                         className="bg-gray-800 rounded-2xl p-4
       transition-transform duration-300 hover:-translate-y-2 cursor-pointer"
                                     >
-                                        <div className="text-green-500 text-4xl mb-3">
+                                        <div className="text-purple-500 text-4xl mb-3">
                                             <data.icon />
                                         </div>
 
@@ -78,7 +81,7 @@ const About = () => {
                                             {data.description}
                                         </p>
                                     </div>
-                                ))} 
+                                ))}
                             </div>
 
                         </div>

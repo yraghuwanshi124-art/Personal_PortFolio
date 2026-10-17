@@ -71,10 +71,10 @@ const Contacts = () => {
         setSent(false)
 
         emailjs.sendForm(
-            'service_sv5q25o',
-            'template_6k2w10u',
+            'service_pxqppxe',
+            'template_ita013e',
             form.current,
-            '-gLXeBx0TDJ3jJntR'
+            '8il5j4lChl5ZpHCK9'
         )
             .then(() => {
                 setSending(false)
@@ -87,8 +87,7 @@ const Contacts = () => {
                 console.log('Text:', error.text)
 
                 setSending(false)
-
-                alert('Message Send Failed. Please try again.')
+                alert('Message send failed. Please try again.')
             })
     }
 
@@ -105,7 +104,7 @@ const Contacts = () => {
             <div className="container mx-auto px-6">
 
                 <h2 className="text-3xl font-semibold text-center">
-                    Get In <span className="text-green-500">Touch</span>
+                    Get In <span className="text-purple-500">Touch</span>
                 </h2>
 
                 <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-center mb-8">
@@ -200,7 +199,7 @@ const Contacts = () => {
                             {/* SUCCESS MESSAGE */}
 
                             {sent && (
-                                <p className="text-green-500 text-center font-semibold">
+                                <p className="text-purple-500 text-center font-semibold">
                                     Message sent successfully! ✅
                                 </p>
                             )}
@@ -216,7 +215,7 @@ const Contacts = () => {
 
                         <div className="flex items-start">
 
-                            <div className="text-green-500 text-xl">
+                            <div className="text-purple-500 text-xl">
                                 <FaMapMarkerAlt />
                             </div>
 
@@ -235,7 +234,7 @@ const Contacts = () => {
 
                         <div className="flex items-start">
 
-                            <div className="text-green-500 text-xl">
+                            <div className="text-purple-500 text-xl">
                                 <FaEnvelope />
                             </div>
 
@@ -245,7 +244,7 @@ const Contacts = () => {
                                 </h3>
 
                                 <p className="text-gray-200 text-lg">
-                                    yraghuwanshi92@gmail.com
+                                    aswanihoney8347@gmail.com
                                 </p>
                             </div>
 
@@ -254,7 +253,7 @@ const Contacts = () => {
 
                         <div className="flex items-start">
 
-                            <div className="text-green-500 text-xl">
+                            <div className="text-purple-500 text-xl">
                                 <FaPhoneAlt />
                             </div>
 
@@ -264,7 +263,7 @@ const Contacts = () => {
                                 </h3>
 
                                 <p className="text-gray-200 text-lg">
-                                    708988XXXX
+                                    62606XXXXX
                                 </p>
                             </div>
 
@@ -280,51 +279,39 @@ const Contacts = () => {
                             <div className="flex space-x-4">
 
                                 <a
-                                    href="https://github.com/yraghuwanshi124-art"
+                                    href="https://github.com/honeyAswani"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-12 h-12 rounded-full bg-dark-300
                                     flex items-center text-2xl justify-center
-                                    text-green-500 hover:bg-green-600
+                                    text-purple-500 hover:bg-purple-600
                                     hover:text-white transition duration-300"
                                 >
                                     <FaGithub />
                                 </a>
 
                                 <a
-                                    href="https://www.linkedin.com/in/yash-raghuwanshi-2nd-44a498365/"
+                                    href="https://www.linkedin.com/in/honey-aswani-3a0889336/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-12 h-12 rounded-full bg-dark-300
                                     flex items-center text-2xl justify-center
-                                    text-green-500 hover:bg-green-700
+                                    text-purple-500 hover:bg-purple-700
                                     hover:text-white transition duration-300"
                                 >
                                     <FaLinkedin />
                                 </a>
 
                                 <a
-                                    href="https://www.instagram.com/_yasssh._05?igsh=dnE3NXk4eWlpYjB2"
+                                    href="https://www.instagram.com/_honeyaswani_2806/"
                                     className="w-12 h-12 rounded-full bg-dark-300
                                     flex items-center text-2xl justify-center
-                                    text-green-500 hover:bg-green-700
+                                    text-purple-500 hover:bg-purple-700
                                     hover:text-white transition duration-300"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
                                     <FaInstagram />
-                                </a>
-
-                                <a
-                                    href="https://www.snapchat.com/add/yash_r20255402?share_id=q3d8CXm6e00&locale=en-GB"
-                                    className="w-12 h-12 rounded-full bg-dark-300
-                                    flex items-center text-2xl justify-center
-                                    text-green-500 hover:bg-green-700
-                                    hover:text-white transition duration-300"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <FaSnapchat />
                                 </a>
 
                             </div>

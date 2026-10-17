@@ -1,16 +1,80 @@
-# React + Vite
+# 🚀 Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio website!
 
-Currently, two official plugins are available:
+This portfolio showcases my **skills, projects, experience, and journey as a Computer Science student and developer**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 👨‍💻 About Me
 
-## React Compiler
+Hi, I'm **Yash Raghuwanshi**, a Computer Science student passionate about software development, web development, and problem solving.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+I'm continuously learning new technologies and building projects to improve my development skills.
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* HTML
+* CSS
+* JavaScript
+* React.js
+* Vite
+* C++
+* Python
+* Git & GitHub
+
+## ✨ Features
+
+* Responsive portfolio design
+* About Me section
+* Skills section
+* Projects showcase
+* Experience section
+* Contact section
+* Modern React-based UI
+
+## 📂 Projects
+
+Some of the projects showcased in this portfolio include:
+
+* Amazon Clone
+* Weather App
+* Stone Paper Scissors Game
+* Todo List
+* Stopwatch
+* Motivation Quotes App
+
+## ⚙️ Run Locally
+
+Clone the repository:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/portfolio.git
+```
+
+Navigate to the project:
+
+```bash
+cd portfolio
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The project will run locally using Vite.
+
+## 📸 Portfolio
+
+🌐 **Live Portfolio:** Coming Soon
+
+
+---
+
+⭐ If you like this portfolio, feel free to explore the repository!

@@ -79,27 +79,25 @@ export const skills = [
 
 export const projects = [
   {
+    title: "Campus Maintenance System",
+    image: projectImg3,
+    description:
+      "A full-stack campus maintenance management system that allows students and staff to report maintenance issues, track complaint status, and manage requests through a centralized platform.",
+    tech: ["React", "Tailwind CSS", "Node.js", "Express.js", "MongoDB"],
+  },
+
+{
+  title: "BookNest",
+  image: projectImg2,
+  description:
+"BookNest is a book management web application developed as an internship task. It provides a user-friendly interface for exploring books, organizing book-related information, and enjoying a smooth browsing experience. The project focuses on clean UI design, usability, and building a practical web application using modern web technologies.",  tech: ["React", "Tailwind CSS", "Node.js", "Express.js" , "MongoDB"],
+},
+  {
     title: "Stone Paper Scissors",
     image: projectImg1,
     description:
       "A simple and interactive Stone Paper Scissors game built with HTML, CSS, and JavaScript where users can play against the computer with instant results.",
     tech: ["HTML", "CSS", "JavaScript"],
-  },
-
-  {
-    title: "Motivation Quote Generator",
-    image: projectImg2,
-    description:
-      "A motivational quote generator built with JavaScript that displays inspiring quotes with a clean and interactive user interface.",
-    tech: ["HTML", "CSS", "JavaScript"],
-  },
-
-  {
-    title: "Stopwatch",
-    image: projectImg3,
-    description:
-      "A functional stopwatch application built with JavaScript that allows users to start, pause, reset, and track elapsed time with an interactive interface.",
-    tech: ["React","Tailwind CSS"],
   },
 
   {

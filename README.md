@@ -1,80 +1,47 @@
-# 🚀 Personal Portfolio
+# Personal Portfolio — Yash Raghuwanshi
 
-Welcome to my personal portfolio website!
+Welcome to my personal portfolio repository! This project showcases my skills, projects, and journey as a Computer Science Engineering student and aspiring Software Engineer.
 
-This portfolio showcases my **skills, projects, experience, and journey as a Computer Science student and developer**.
+## About Me
 
-## 👨‍💻 About Me
+I am pursuing **B.Tech in Computer Science Engineering (Advanced AI – IBM Collaboration)** at Medi-Caps University, Indore. I enjoy building responsive, user-friendly web applications and continuously improving my development skills.
 
-Hi, I'm **Yash Raghuwanshi**, a Computer Science student passionate about software development, web development, and problem solving.
+I am currently strengthening my skills in frontend development and learning backend technologies to build full-stack applications.
 
-I'm continuously learning new technologies and building projects to improve my development skills.
+## Tech Stack
 
-## 🛠️ Tech Stack
+- **Frontend:** HTML5, CSS3, JavaScript, React.js
+- **Styling:** Tailwind CSS, Bootstrap
+- **Tools:** Git, GitHub, VS Code
+- **Currently Learning:** Node.js, Express.js, MongoDB
 
-* HTML
-* CSS
-* JavaScript
-* React.js
-* Vite
-* C++
-* Python
-* Git & GitHub
+## Featured Projects
 
-## ✨ Features
+Here are some of the projects I have worked on:
 
-* Responsive portfolio design
-* About Me section
-* Skills section
-* Projects showcase
-* Experience section
-* Contact section
-* Modern React-based UI
+- **Amazon Clone** — An e-commerce website UI clone.
+- **Weather App** — A weather application using the Open-Meteo API.
+- **BookNest** — A book-related web project.
+- **To-Do App** — A task management application.
+- **Campus Maintenance System** — A web application for managing campus maintenance complaints.
 
-## 📂 Projects
+Explore the repository to learn more about my work.
 
-Some of the projects showcased in this portfolio include:
+## Connect With Me
 
-* Amazon Clone
-* Weather App
-* Stone Paper Scissors Game
-* Todo List
-* Stopwatch
-* Motivation Quotes App
+- **GitHub:** https://github.com/yraghuwanshi124-art
+- **LinkedIn:** https://www.linkedin.com/
+- **Portfolio:** Add your live portfolio URL here.
 
-## ⚙️ Run Locally
+## Goals
 
-Clone the repository:
-
-```bash
-git clone https://github.com/YOUR-USERNAME/portfolio.git
-```
-
-Navigate to the project:
-
-```bash
-cd portfolio
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-The project will run locally using Vite.
-
-## 📸 Portfolio
-
-🌐 **Live Portfolio:** Coming Soon
-
+- Improve my problem-solving and DSA skills.
+- Build practical web development projects.
+- Learn full-stack development.
+- Contribute to real-world software projects.
 
 ---
 
-⭐ If you like this portfolio, feel free to explore the repository!
+⭐ If you find my projects interesting, feel free to explore my repositories!
+
+*Built with curiosity, consistency, and a passion for learning.*

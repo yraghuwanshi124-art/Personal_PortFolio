@@ -1,331 +1,540 @@
-import React, { useRef, useState } from 'react'
-import { motion } from 'framer-motion'
-import emailjs from '@emailjs/browser'
+import React, { useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import {
-    FaEnvelope,
-    FaGithub,
-    FaInstagram,
-    FaLinkedin,
-    FaMapMarkerAlt,
-    FaPhoneAlt,
-    FaSnapchat
-} from 'react-icons/fa'
+  FaEnvelope,
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaPaperPlane,
+  FaCheckCircle,
+  FaExclamationCircle,
+} from "react-icons/fa";
 
 const Contacts = () => {
+  const form = useRef(null);
+  const shouldReduceMotion = useReducedMotion();
 
-    const form = useRef()
-    const [sending, setSending] = useState(false)
-    const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState({
+    type: "",
+    message: "",
+  });
 
-    const sendEmail = (e) => {
-        e.preventDefault()
+  const contactInfo = [
+    {
+      icon: FaMapMarkerAlt,
+      title: "Location",
+      value: "Indore, Madhya Pradesh, India",
+    },
+    {
+      icon: FaEnvelope,
+      title: "Email",
+      value: "Send me a message using the form",
+    },
+    {
+      icon: FaPhoneAlt,
+      title: "Phone",
+      value: "70898XXXXX",
+    },
+  ];
 
-        const name = form.current.name.value.trim()
-        const email = form.current.email.value.trim()
-        const message = form.current.message.value.trim()
+  const socialLinks = [
+    {
+      name: "GitHub",
+      icon: FaGithub,
+      url: "https://github.com/yraghuwanshi124-art",
+    },
+    {
+      name: "LinkedIn",
+      icon: FaLinkedin,
+      url: "https://www.linkedin.com/",
+    },
+    {
+      name: "Instagram",
+      icon: FaInstagram,
+      url: "https://www.instagram.com/",
+    },
+  ];
 
-        // Name validation
-        if (name === '') {
-            alert('Please enter your name.')
-            form.current.name.focus()
-            return
-        }
+  const sendEmail = async (e) => {
+    e.preventDefault();
 
-        if (name.length < 2) {
-            alert('Please enter a valid name.')
-            form.current.name.focus()
-            return
-        }
+    if (!form.current || sending) return;
 
-        // Email validation
-        if (email === '') {
-            alert('Please enter your email address.')
-            form.current.email.focus()
-            return
-        }
+    const name = form.current.elements.namedItem("name").value.trim();
+    const email = form.current.elements.namedItem("email").value.trim();
+    const message = form.current.elements.namedItem("message").value.trim();
 
-        // Email format validation
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        if (!emailPattern.test(email)) {
-            alert('Please enter a valid email address. Example: example@gmail.com')
-            form.current.email.focus()
-            return
-        }
-
-        // Message validation
-        if (message === '') {
-            alert('Please enter your message.')
-            form.current.message.focus()
-            return
-        }
-
-        if (message.length < 10) {
-            alert('Please enter a message of at least 10 characters.')
-            form.current.message.focus()
-            return
-        }
-
-        // Send email
-        setSending(true)
-        setSent(false)
-
-        emailjs.sendForm(
-            'service_pxqppxe',
-            'template_ita013e',
-            form.current,
-            '8il5j4lChl5ZpHCK9'
-        )
-            .then(() => {
-                setSending(false)
-                setSent(true)
-                e.target.reset()
-            })
-            .catch((error) => {
-                console.log('Email Error:', error)
-                console.log('Status:', error.status)
-                console.log('Text:', error.text)
-
-                setSending(false)
-                alert('Message send failed. Please try again.')
-            })
+    if (name.length < 2) {
+      setStatus({
+        type: "error",
+        message: "Please enter a name with at least 2 characters.",
+      });
+      form.current.elements.namedItem("name").focus();
+      return;
     }
 
-    return (
+    if (!emailPattern.test(email)) {
+      setStatus({
+        type: "error",
+        message: "Please enter a valid email address.",
+      });
+      form.current.elements.namedItem("email").focus();
+      return;
+    }
+
+    if (message.length < 10) {
+      setStatus({
+        type: "error",
+        message: "Your message must contain at least 10 characters.",
+      });
+      form.current.elements.namedItem("message").focus();
+      return;
+    }
+
+    setSending(true);
+    setStatus({ type: "", message: "" });
+
+    try {
+      await emailjs.sendForm(
+        "service_pxqppxe",
+        "template_ita013e",
+        form.current,
+        "8il5j4lChl5ZpHCK9"
+      );
+
+      form.current.reset();
+
+      setStatus({
+        type: "success",
+        message: "Message sent successfully! I will get back to you soon.",
+      });
+    } catch (error) {
+      console.error("EmailJS error:", error);
+
+      setStatus({
+        type: "error",
+        message: "Unable to send your message. Please try again later.",
+      });
+    } finally {
+      setSending(false);
+    }
+  };
+
+  const inputStyle = {
+    backgroundColor: "var(--bg-primary)",
+    color: "var(--text-primary)",
+    borderColor: "var(--border-color)",
+    "--tw-ring-color": "var(--accent-soft)",
+  };
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 22 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0.2 : 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  return (
+    <section
+      id="contacts"
+      className="relative isolate scroll-mt-20 overflow-hidden px-5 py-24 transition-colors duration-300 sm:px-8 sm:py-28 lg:py-32"
+      style={{
+        backgroundColor: "var(--bg-primary)",
+        color: "var(--text-primary)",
+      }}
+    >
+      {/* Background decoration */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+        aria-hidden="true"
+      >
+        <div
+          className="absolute -left-32 top-20 h-80 w-80 rounded-full blur-[120px]"
+          style={{ backgroundColor: "var(--accent-soft)" }}
+        />
+        <div
+          className="absolute -right-32 bottom-0 h-80 w-80 rounded-full blur-[120px]"
+          style={{ backgroundColor: "var(--accent-soft)" }}
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl">
+        {/* Section heading */}
         <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-14"
-            id="contacts"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mx-auto mb-14 max-w-2xl text-center sm:mb-16"
         >
+          <span
+            className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em]"
+            style={{
+              borderColor: "var(--accent-border)",
+              backgroundColor: "var(--accent-soft)",
+              color: "var(--accent)",
+            }}
+          >
+            <span
+              className="h-2 w-2 rounded-full"
+              style={{ backgroundColor: "var(--accent)" }}
+            />
+            Let's Connect
+          </span>
 
-            <div className="container mx-auto px-6">
+          <h2 className="mt-5 text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
+            Get In{" "}
+            <span style={{ color: "var(--accent)" }}>Touch.</span>
+          </h2>
 
-                <h2 className="text-3xl font-semibold text-center">
-                    Get In <span className="text-purple-500">Touch</span>
-                </h2>
+          <div
+            className="mx-auto mt-6 h-1 w-16 rounded-full"
+            style={{ backgroundColor: "var(--accent)" }}
+          />
 
-                <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-center mb-8">
-                    Have a project in mind or want to collaborate? lets talk.
-                </p>
+          <p
+            className="mx-auto mt-6 max-w-xl text-sm leading-7 sm:text-base"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            Have an exciting idea, a project, or an opportunity? Let's connect
+            and build something meaningful together.
+          </p>
+        </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mx-auto">
+        {/* Main content */}
+        <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-5 lg:gap-8">
+          {/* Contact information */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="relative overflow-hidden rounded-3xl border p-6 sm:p-8 lg:col-span-2"
+            style={{
+              backgroundColor: "var(--bg-card)",
+              borderColor: "var(--border-color)",
+            }}
+          >
+            <div
+              className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full border"
+              style={{ borderColor: "var(--accent-border)" }}
+            />
+            <div
+              className="pointer-events-none absolute -right-5 -top-5 h-28 w-28 rounded-full border"
+              style={{ borderColor: "var(--accent-border)" }}
+            />
 
-                    {/* LEFT SIDE */}
+            <div className="relative">
+              <p
+                className="text-xs font-semibold uppercase tracking-[0.2em]"
+                style={{ color: "var(--accent)" }}
+              >
+                Contact Information
+              </p>
 
-                    <div>
+              <h3 className="mt-4 text-2xl font-bold leading-snug sm:text-3xl">
+                Let's talk about your next project.
+              </h3>
 
-                        <form
-                            ref={form}
-                            onSubmit={sendEmail}
-                            className="space-y-6"
+              <p
+                className="mt-4 text-sm leading-7 sm:text-base"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                I'm open to discussing projects, creative ideas, internships,
+                and opportunities to learn and grow.
+              </p>
+
+              <div className="mt-9 space-y-6">
+                {contactInfo.map((item, index) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <motion.div
+                      key={item.title}
+                      initial={{
+                        opacity: 0,
+                        y: shouldReduceMotion ? 0 : 12,
+                      }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: shouldReduceMotion ? 0.2 : 0.4,
+                        delay: shouldReduceMotion ? 0 : index * 0.08,
+                      }}
+                      viewport={{ once: true }}
+                      className="group flex items-start gap-4"
+                    >
+                      <div
+                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border transition-colors duration-300"
+                        style={{
+                          borderColor: "var(--accent-border)",
+                          backgroundColor: "var(--accent-soft)",
+                          color: "var(--accent)",
+                        }}
+                      >
+                        <Icon />
+                      </div>
+
+                      <div className="min-w-0 pt-0.5">
+                        <h4 className="font-semibold">{item.title}</h4>
+                        <p
+                          className="mt-1 break-words text-sm leading-6"
+                          style={{ color: "var(--text-secondary)" }}
                         >
+                          {item.value}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
 
-                            {/* NAME */}
+              <div
+                className="my-8 h-px"
+                style={{ backgroundColor: "var(--border-color)" }}
+              />
 
-                            <div>
-                                <label
-                                    htmlFor="name"
-                                    className="block text-gray-300 mb-2 text-xl font-semibold"
-                                >
-                                    Your Name
-                                </label>
+              <h4 className="font-semibold">Follow Me</h4>
+              <p
+                className="mt-2 text-sm leading-6"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                Find me online and explore my work.
+              </p>
 
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    placeholder="Enter your name"
-                                    className="w-full bg-dark-300 border rounded-lg px-4 py-3 outline"
-                                />
-                            </div>
+              <div className="mt-5 flex flex-wrap gap-3">
+                {socialLinks.map((social) => {
+                  const Icon = social.icon;
 
+                  return (
+                    <motion.a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit my ${social.name} profile`}
+                      title={social.name}
+                      whileHover={shouldReduceMotion ? undefined : { y: -3 }}
+                      whileTap={shouldReduceMotion ? undefined : { scale: 0.96 }}
+                      className="flex h-11 w-11 items-center justify-center rounded-xl border text-lg transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2"
+                      style={{
+                        borderColor: "var(--border-color)",
+                        backgroundColor: "var(--bg-primary)",
+                        color: "var(--text-secondary)",
+                        "--tw-ring-color": "var(--accent)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor =
+                          "var(--accent-border)";
+                        e.currentTarget.style.backgroundColor =
+                          "var(--accent-soft)";
+                        e.currentTarget.style.color = "var(--accent)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor =
+                          "var(--border-color)";
+                        e.currentTarget.style.backgroundColor =
+                          "var(--bg-primary)";
+                        e.currentTarget.style.color =
+                          "var(--text-secondary)";
+                      }}
+                    >
+                      <Icon />
+                    </motion.a>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
 
-                            {/* EMAIL */}
-
-                            <div>
-                                <label
-                                    htmlFor="email"
-                                    className="block text-gray-300 mb-2 text-xl font-semibold"
-                                >
-                                    Email Address
-                                </label>
-
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    placeholder="Enter your email"
-                                    className="w-full bg-dark-300 border rounded-lg px-4 py-3 outline"
-                                />
-                            </div>
-
-
-                            {/* MESSAGE */}
-
-                            <div>
-                                <label
-                                    htmlFor="message"
-                                    className="block text-gray-300 mb-2 text-xl font-semibold"
-                                >
-                                    Message
-                                </label>
-
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    placeholder="Enter your message"
-                                    className="w-full bg-dark-300 border h-40 rounded-lg px-4 py-3 outline"
-                                />
-                            </div>
-
-
-                            {/* SEND BUTTON */}
-
-                            <button
-                                type="submit"
-                                disabled={sending}
-                                className="bg-blue-500 px-5 py-4 rounded-lg
-                                w-full text-3xl hover:bg-blue-700
-                                transition duration-300 cursor-pointer
-                                disabled:opacity-50"
-                            >
-                                {sending ? 'Sending...' : 'Send'}
-                            </button>
-
-
-                            {/* SUCCESS MESSAGE */}
-
-                            {sent && (
-                                <p className="text-purple-500 text-center font-semibold">
-                                    Message sent successfully! ✅
-                                </p>
-                            )}
-
-                        </form>
-
-                    </div>
-
-
-                    {/* RIGHT SIDE */}
-
-                    <div className="space-y-8 ml-15 mt-8">
-
-                        <div className="flex items-start">
-
-                            <div className="text-purple-500 text-xl">
-                                <FaMapMarkerAlt />
-                            </div>
-
-                            <div>
-                                <h3 className="ml-2 text-xl font-semibold mb-2">
-                                    Location
-                                </h3>
-
-                                <p className="text-gray-200 text-lg">
-                                    Indore,Madhya Pradesh,India
-                                </p>
-                            </div>
-
-                        </div>
-
-
-                        <div className="flex items-start">
-
-                            <div className="text-purple-500 text-xl">
-                                <FaEnvelope />
-                            </div>
-
-                            <div>
-                                <h3 className="ml-2 text-xl font-semibold mb-2">
-                                    Email Address
-                                </h3>
-
-                                <p className="text-gray-200 text-lg">
-                                    aswanihoney8347@gmail.com
-                                </p>
-                            </div>
-
-                        </div>
-
-
-                        <div className="flex items-start">
-
-                            <div className="text-purple-500 text-xl">
-                                <FaPhoneAlt />
-                            </div>
-
-                            <div>
-                                <h3 className="ml-2 text-xl font-semibold mb-2">
-                                    Phone Number
-                                </h3>
-
-                                <p className="text-gray-200 text-lg">
-                                    62606XXXXX
-                                </p>
-                            </div>
-
-                        </div>
-
-
-                        <div>
-
-                            <h3 className="text-lg font-semibold mb-4">
-                                Follow Me
-                            </h3>
-
-                            <div className="flex space-x-4">
-
-                                <a
-                                    href="https://github.com/honeyAswani"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-12 h-12 rounded-full bg-dark-300
-                                    flex items-center text-2xl justify-center
-                                    text-purple-500 hover:bg-purple-600
-                                    hover:text-white transition duration-300"
-                                >
-                                    <FaGithub />
-                                </a>
-
-                                <a
-                                    href="https://www.linkedin.com/in/honey-aswani-3a0889336/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-12 h-12 rounded-full bg-dark-300
-                                    flex items-center text-2xl justify-center
-                                    text-purple-500 hover:bg-purple-700
-                                    hover:text-white transition duration-300"
-                                >
-                                    <FaLinkedin />
-                                </a>
-
-                                <a
-                                    href="https://www.instagram.com/_honeyaswani_2806/"
-                                    className="w-12 h-12 rounded-full bg-dark-300
-                                    flex items-center text-2xl justify-center
-                                    text-purple-500 hover:bg-purple-700
-                                    hover:text-white transition duration-300"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <FaInstagram />
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
+          {/* Contact form */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="rounded-3xl border p-6 sm:p-8 lg:col-span-3"
+            style={{
+              backgroundColor: "var(--bg-card)",
+              borderColor: "var(--border-color)",
+            }}
+          >
+            <div className="mb-8">
+              <h3 className="text-2xl font-bold sm:text-3xl">
+                Send Me a Message
+              </h3>
+              <p
+                className="mt-3 text-sm leading-6 sm:text-base"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                Fill in the details below and I'll get back to you.
+              </p>
             </div>
 
-        </motion.div>
-    )
-}
+            <form
+              ref={form}
+              onSubmit={sendEmail}
+              className="space-y-6"
+              noValidate
+            >
+              <div>
+                <label
+                  htmlFor="contact-name"
+                  className="mb-2 block text-sm font-medium"
+                >
+                  Your Name{" "}
+                  <span style={{ color: "var(--accent)" }}>*</span>
+                </label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  placeholder="Enter your full name"
+                  autoComplete="name"
+                  maxLength={100}
+                  required
+                  className="w-full rounded-xl border px-4 py-3.5 outline-none transition-all duration-300 focus:ring-4"
+                  style={inputStyle}
+                />
+              </div>
 
-export default Contacts
+              <div>
+                <label
+                  htmlFor="contact-email"
+                  className="mb-2 block text-sm font-medium"
+                >
+                  Email Address{" "}
+                  <span style={{ color: "var(--accent)" }}>*</span>
+                </label>
+                <input
+                  type="email"
+                  id="contact-email"
+                  name="email"
+                  placeholder="you@example.com"
+                  autoComplete="email"
+                  maxLength={254}
+                  required
+                  className="w-full rounded-xl border px-4 py-3.5 outline-none transition-all duration-300 focus:ring-4"
+                  style={inputStyle}
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="contact-message"
+                  className="mb-2 block text-sm font-medium"
+                >
+                  Your Message{" "}
+                  <span style={{ color: "var(--accent)" }}>*</span>
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  rows={5}
+                  maxLength={3000}
+                  placeholder="Tell me about your idea or project..."
+                  required
+                  className="w-full resize-y rounded-xl border px-4 py-3.5 outline-none transition-all duration-300 focus:ring-4"
+                  style={inputStyle}
+                />
+                <p
+                  className="mt-2 text-right text-xs"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  Minimum 10 characters
+                </p>
+              </div>
+
+              {/* Status message */}
+              {status.message && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  role="status"
+                  aria-live="polite"
+                  className="flex items-start gap-3 rounded-xl border p-4 text-sm leading-6"
+                  style={
+                    status.type === "success"
+                      ? {
+                          borderColor: "rgba(16,185,129,0.3)",
+                          backgroundColor: "rgba(16,185,129,0.09)",
+                          color: "var(--text-primary)",
+                        }
+                      : {
+                          borderColor: "rgba(239,68,68,0.3)",
+                          backgroundColor: "rgba(239,68,68,0.08)",
+                          color: "var(--text-primary)",
+                        }
+                  }
+                >
+                  {status.type === "success" ? (
+                    <FaCheckCircle className="mt-1 shrink-0 text-emerald-500" />
+                  ) : (
+                    <FaExclamationCircle className="mt-1 shrink-0 text-red-500" />
+                  )}
+                  <span>{status.message}</span>
+                </motion.div>
+              )}
+
+              <button
+                type="submit"
+                disabled={sending}
+                className="group flex w-full items-center justify-center gap-3 rounded-xl px-6 py-4 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+                style={{
+                  backgroundColor: "var(--accent)",
+                  "--tw-ring-color": "var(--accent)",
+                  "--tw-ring-offset-color": "var(--bg-card)",
+                }}
+              >
+                {sending ? (
+                  <>
+                    <span className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                    Sending Message...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <FaPaperPlane className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+                  </>
+                )}
+              </button>
+
+              <p
+                className="text-center text-xs leading-5"
+                style={{ color: "var(--text-muted)" }}
+              >
+                Your information will only be used to respond to your message.
+              </p>
+            </form>
+          </motion.div>
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: shouldReduceMotion ? 0.2 : 0.6 }}
+          viewport={{ once: true }}
+          className="mt-12 text-center text-sm"
+          style={{ color: "var(--text-muted)" }}
+        >
+          Have a great idea?{" "}
+          <span style={{ color: "var(--accent)" }}>
+            Let's make it happen.
+          </span>
+        </motion.p>
+      </div>
+    </section>
+  );
+};
+
+export default Contacts;

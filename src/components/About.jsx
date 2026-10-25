@@ -1,33 +1,68 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import profile from "../assets/assets/profile.jpeg";
+import {
+  ArrowUpRight,
+  GraduationCap,
+  Code2,
+  Lightbulb,
+} from "lucide-react";
+import profile3 from "../assets/assets/profile3.jpeg";
 import { aboutInfo } from "../assets/assets/assets";
+
+const highlights = [
+  {
+    icon: GraduationCap,
+    title: "Computer Science",
+    description: "Building strong programming fundamentals.",
+  },
+  {
+    icon: Code2,
+    title: "Project Driven",
+    description: "Turning concepts into practical applications.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Continuous Learning",
+    description: "Exploring tools and improving every day.",
+  },
+];
 
 const About = () => {
   const reduceMotion = useReducedMotion();
 
   const reveal = {
-    hidden: { opacity: 0, y: reduceMotion ? 0 : 35 },
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 24 },
     visible: { opacity: 1, y: 0 },
   };
 
   const transition = {
-    duration: reduceMotion ? 0 : 0.7,
+    duration: reduceMotion ? 0 : 0.65,
     ease: "easeOut",
   };
 
   return (
     <section
       id="about"
-      className="relative scroll-mt-20 overflow-hidden bg-[#0b100d] px-5 py-24 text-white sm:px-8 lg:py-32"
+      className="relative isolate scroll-mt-20 overflow-hidden px-5 py-24 sm:px-8 lg:py-32"
+      style={{
+        backgroundColor: "var(--bg-secondary)",
+        color: "var(--text-primary)",
+      }}
     >
-      {/* Background decoration */}
-      <div className="pointer-events-none absolute -left-40 top-40 h-80 w-80 rounded-full bg-green-500/[0.06] blur-[100px]" />
-      <div className="pointer-events-none absolute -right-40 bottom-10 h-80 w-80 rounded-full bg-emerald-400/[0.05] blur-[100px]" />
+      {/* Ambient background */}
+      <div
+        className="pointer-events-none absolute -left-40 top-36 -z-10 h-80 w-80 rounded-full blur-[110px]"
+        style={{ backgroundColor: "var(--accent-soft)" }}
+      />
 
-      <div className="relative mx-auto max-w-7xl">
-        {/* Section Heading */}
+      <div
+        className="pointer-events-none absolute -right-40 bottom-10 -z-10 h-80 w-80 rounded-full blur-[110px]"
+        style={{ backgroundColor: "var(--accent-soft)" }}
+      />
+
+      <div className="mx-auto max-w-7xl">
+        {/* Section heading */}
         <motion.div
           variants={reveal}
           initial="hidden"
@@ -36,120 +71,174 @@ const About = () => {
           transition={transition}
           className="mb-16 text-center"
         >
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-green-400/20 bg-green-400/[0.07] px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-green-300">
+          <span
+            className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em]"
+            style={{
+              borderColor: "var(--accent-border)",
+              backgroundColor: "var(--accent-soft)",
+              color: "var(--accent)",
+            }}
+          >
             A little about me
           </span>
 
-          <h2 className="text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
-            About <span className="text-green-400">Me.</span>
+          <h2 className="mt-5 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
+            About <span style={{ color: "var(--accent)" }}>Me.</span>
           </h2>
 
-          <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-gray-400 sm:text-lg">
+          <p
+            className="mx-auto mt-5 max-w-2xl text-base leading-7 sm:text-lg"
+            style={{ color: "var(--text-secondary)" }}
+          >
             The person behind the code, driven by curiosity and a passion
             for building useful digital experiences.
           </p>
 
           <motion.div
             initial={{ width: 0 }}
-            whileInView={{ width: 72 }}
+            whileInView={{ width: 64 }}
             viewport={{ once: true }}
-            transition={{ duration: reduceMotion ? 0 : 0.8, delay: 0.2 }}
-            className="mx-auto mt-7 h-1 rounded-full bg-green-400"
+            transition={{
+              duration: reduceMotion ? 0 : 0.7,
+              delay: 0.15,
+            }}
+            className="mx-auto mt-7 h-1 rounded-full"
+            style={{ backgroundColor: "var(--accent)" }}
           />
         </motion.div>
 
-        {/* Main Content */}
+        {/* Main layout */}
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
-          {/* Profile Image */}
+          {/* Profile */}
           <motion.div
-            initial={{ opacity: 0, x: reduceMotion ? 0 : -45 }}
+            initial={{
+              opacity: 0,
+              x: reduceMotion ? 0 : -28,
+            }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ ...transition, duration: reduceMotion ? 0 : 0.9 }}
+            transition={transition}
             className="flex justify-center"
           >
             <div className="group relative w-full max-w-md">
-              {/* Glow */}
-              <div className="absolute -inset-3 rounded-[2rem] bg-green-400/10 opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+              <div
+                className="absolute -inset-3 rounded-[2rem] opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
+                style={{ backgroundColor: "var(--accent-soft)" }}
+              />
 
-              {/* Image Frame */}
-              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#111914] p-3 shadow-2xl">
+              <div
+                className="relative overflow-hidden rounded-[2rem] border p-3 shadow-2xl"
+                style={{
+                  borderColor: "var(--border-color)",
+                  backgroundColor: "var(--bg-card)",
+                }}
+              >
                 <motion.img
                   animate={
-                    reduceMotion ? {} : { scale: [1, 1.025, 1] }
+                    reduceMotion ? {} : { scale: [1, 1.018, 1] }
                   }
                   transition={{
                     duration: 7,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  src={profile}
+                  src={profile3}
                   alt="Yash Raghuwanshi"
                   loading="lazy"
-                  className="aspect-[4/5] w-full rounded-[1.5rem] object-cover object-center transition duration-700 group-hover:brightness-110"
+                  className="aspect-[4/5] w-full rounded-[1.5rem] object-cover object-center"
                 />
 
-                {/* Image Overlay */}
-                <div className="pointer-events-none absolute inset-x-3 bottom-3 rounded-b-[1.5rem] bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 pt-20">
+                <div className="pointer-events-none absolute inset-x-3 bottom-3 rounded-b-[1.5rem] bg-gradient-to-t from-black/90 via-black/45 to-transparent p-6 pt-24">
                   <p className="text-xl font-bold text-white">
                     Yash Raghuwanshi
                   </p>
-                  <p className="mt-1 text-sm text-green-300">
+                  <p
+                    className="mt-1 text-sm font-medium"
+                    style={{ color: "var(--accent)" }}
+                  >
                     Computer Science Student
                   </p>
                 </div>
               </div>
 
-              {/* Floating Accent */}
+              {/* Floating label */}
               <motion.div
-                animate={
-                  reduceMotion ? {} : { y: [0, -8, 0] }
-                }
+                animate={reduceMotion ? {} : { y: [0, -6, 0] }}
                 transition={{
-                  duration: 4,
+                  duration: 4.5,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -right-3 top-10 hidden rounded-2xl border border-green-400/20 bg-[#111914]/95 px-4 py-3 shadow-xl backdrop-blur-xl sm:block sm:-right-6"
+                className="absolute -right-2 top-10 hidden rounded-2xl border px-4 py-3 shadow-xl backdrop-blur-xl sm:block sm:-right-5"
+                style={{
+                  borderColor: "var(--border-color)",
+                  backgroundColor: "var(--bg-card)",
+                }}
               >
-                <span className="block text-xs text-gray-400">
+                <span
+                  className="block text-xs"
+                  style={{ color: "var(--text-muted)" }}
+                >
                   My mindset
                 </span>
-                <span className="mt-1 block font-semibold text-green-300">
-                  Learn. Build. Repeat.
+                <span
+                  className="mt-1 block text-sm font-semibold"
+                  style={{ color: "var(--accent)" }}
+                >
+                  Learn. Build. Improve.
                 </span>
               </motion.div>
 
-              <div className="absolute -bottom-4 -left-3 -z-10 h-32 w-32 rounded-full border border-green-400/20 sm:-left-6" />
+              <div
+                className="absolute -bottom-4 -left-3 -z-10 h-28 w-28 rounded-full border sm:-left-6"
+                style={{ borderColor: "var(--accent-border)" }}
+              />
             </div>
           </motion.div>
 
-          {/* Journey Content */}
+          {/* Journey */}
           <motion.div
-            initial={{ opacity: 0, x: reduceMotion ? 0 : 45 }}
+            initial={{
+              opacity: 0,
+              x: reduceMotion ? 0 : 28,
+            }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ ...transition, delay: 0.1 }}
+            transition={{
+              ...transition,
+              delay: reduceMotion ? 0 : 0.1,
+            }}
           >
-            <span className="text-sm font-semibold uppercase tracking-[0.2em] text-green-400">
+            <p
+              className="text-sm font-semibold uppercase tracking-[0.2em]"
+              style={{ color: "var(--accent)" }}
+            >
               My journey
-            </span>
+            </p>
 
-            <h3 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-              Turning curiosity into
-              <span className="text-green-400"> real projects.</span>
+            <h3 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+              Turning curiosity into{" "}
+              <span style={{ color: "var(--accent)" }}>
+                real projects.
+              </span>
             </h3>
 
-            <p className="mt-6 text-base leading-8 text-gray-400">
+            <p
+              className="mt-6 text-base leading-8"
+              style={{ color: "var(--text-secondary)" }}
+            >
               My journey into development started with a curiosity to
               understand how websites and applications work. I began by
               learning programming fundamentals and gradually explored
               HTML, CSS, JavaScript, React, and modern web technologies.
-              Building projects has helped me turn what I learn into
-              practical skills.
+              Building projects helps me turn what I learn into practical
+              skills.
             </p>
 
-            <p className="mt-5 text-base leading-8 text-gray-400">
+            <p
+              className="mt-5 text-base leading-8"
+              style={{ color: "var(--text-secondary)" }}
+            >
               Currently, I’m expanding my knowledge of backend development
               with Node.js and related technologies while strengthening my
               problem-solving skills through Data Structures and Algorithms.
@@ -157,46 +246,112 @@ const About = () => {
               applications, and continuously improving as a developer.
             </p>
 
-            {/* About Information Cards */}
-            <div className="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {aboutInfo.map((data, index) => {
-                const Icon = data.icon;
+            {/* Highlights */}
+            <div className="mt-9 grid gap-3 sm:grid-cols-3">
+              {highlights.map((item, index) => {
+                const Icon = item.icon;
 
                 return (
                   <motion.div
-                    key={data.title ?? index}
+                    key={item.title}
                     initial={{
                       opacity: 0,
-                      y: reduceMotion ? 0 : 22,
+                      y: reduceMotion ? 0 : 14,
                     }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
+                    viewport={{ once: true }}
                     transition={{
                       ...transition,
-                      delay: reduceMotion ? 0 : index * 0.12,
+                      delay: reduceMotion ? 0 : index * 0.1,
                     }}
-                    whileHover={
-                      reduceMotion
-                        ? {}
-                        : { y: -6, transition: { duration: 0.2 } }
-                    }
-                    className="group rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 transition-colors duration-300 hover:border-green-400/30 hover:bg-green-400/[0.04]"
+                    whileHover={reduceMotion ? {} : { y: -4 }}
+                    className="rounded-2xl border p-4 transition-colors duration-300"
+                    style={{
+                      borderColor: "var(--border-color)",
+                      backgroundColor: "var(--bg-card)",
+                    }}
                   >
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-green-400/15 bg-green-400/10 text-2xl text-green-400 transition-transform duration-300 group-hover:scale-110">
-                      {Icon ? <Icon /> : null}
-                    </div>
+                    <Icon
+                      size={21}
+                      style={{ color: "var(--accent)" }}
+                    />
 
-                    <h4 className="text-lg font-bold text-white">
-                      {data.title}
+                    <h4
+                      className="mt-4 text-sm font-bold"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {item.title}
                     </h4>
 
-                    <p className="mt-2 text-sm leading-6 text-gray-400">
-                      {data.description}
+                    <p
+                      className="mt-2 text-xs leading-5"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {item.description}
                     </p>
                   </motion.div>
                 );
               })}
             </div>
+
+            {/* Existing data-driven information */}
+            {Array.isArray(aboutInfo) && aboutInfo.length > 0 && (
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                {aboutInfo.map((data, index) => {
+                  const Icon = data.icon;
+
+                  return (
+                    <motion.div
+                      key={data.title ?? index}
+                      initial={{
+                        opacity: 0,
+                        y: reduceMotion ? 0 : 16,
+                      }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{
+                        ...transition,
+                        delay: reduceMotion ? 0 : index * 0.08,
+                      }}
+                      whileHover={reduceMotion ? {} : { y: -4 }}
+                      className="group rounded-2xl border p-5 transition-colors duration-300"
+                      style={{
+                        borderColor: "var(--border-color)",
+                        backgroundColor: "var(--bg-card)",
+                      }}
+                    >
+                      <div
+                        className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl"
+                        style={{
+                          backgroundColor: "var(--accent-soft)",
+                          color: "var(--accent)",
+                        }}
+                      >
+                        {Icon ? (
+                          <Icon size={21} />
+                        ) : (
+                          <ArrowUpRight size={21} />
+                        )}
+                      </div>
+
+                      <h4
+                        className="text-base font-bold"
+                        style={{ color: "var(--text-primary)" }}
+                      >
+                        {data.title}
+                      </h4>
+
+                      <p
+                        className="mt-2 text-sm leading-6"
+                        style={{ color: "var(--text-secondary)" }}
+                      >
+                        {data.description}
+                      </p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            )}
           </motion.div>
         </div>
       </div>

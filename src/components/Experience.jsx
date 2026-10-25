@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { workData } from "../assets/assets/assets";
@@ -6,67 +5,72 @@ import { workData } from "../assets/assets/assets";
 function Experience() {
   const shouldReduceMotion = useReducedMotion();
 
-  const accentColors = {
-    green: {
-      dot: "bg-green-400",
-      text: "text-green-400",
-      border: "group-hover:border-green-400/30",
-      glow: "group-hover:shadow-green-500/5",
-    },
-    pink: {
-      dot: "bg-pink-400",
-      text: "text-pink-400",
-      border: "group-hover:border-pink-400/30",
-      glow: "group-hover:shadow-pink-500/5",
-    },
-    blue: {
-      dot: "bg-blue-400",
-      text: "text-blue-400",
-      border: "group-hover:border-blue-400/30",
-      glow: "group-hover:shadow-blue-500/5",
-    },
-  };
-
   return (
     <section
       id="experience"
-      className="relative isolate overflow-hidden bg-[#080c0a] px-5 py-24 sm:px-8 sm:py-28"
+      className="relative isolate scroll-mt-20 overflow-hidden px-5 py-24 transition-colors duration-300 sm:px-8 sm:py-28 lg:py-32"
+      style={{
+        backgroundColor: "var(--bg-primary)",
+        color: "var(--text-primary)",
+      }}
     >
-      {/* Background glow */}
+      {/* Background decoration */}
       <div
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
         aria-hidden="true"
       >
-        <div className="absolute left-0 top-24 h-72 w-72 rounded-full bg-green-500/[0.06] blur-[120px]" />
-        <div className="absolute bottom-10 right-0 h-72 w-72 rounded-full bg-emerald-400/[0.05] blur-[120px]" />
+        <div
+          className="absolute left-0 top-24 h-72 w-72 rounded-full blur-[120px]"
+          style={{ backgroundColor: "var(--accent-soft)" }}
+        />
+        <div
+          className="absolute bottom-10 right-0 h-72 w-72 rounded-full blur-[120px]"
+          style={{ backgroundColor: "var(--accent-soft)" }}
+        />
       </div>
 
-      <div className="mx-auto max-w-6xl">
+      <div className="relative mx-auto max-w-6xl">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: shouldReduceMotion ? 0.2 : 0.7 }}
+          transition={{ duration: shouldReduceMotion ? 0.2 : 0.65 }}
           viewport={{ once: true, amount: 0.3 }}
-          className="mb-16 text-center sm:mb-20"
+          className="mb-14 text-center sm:mb-16 lg:mb-20"
         >
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-green-400/20 bg-green-400/[0.06] px-4 py-2">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-green-300">
+          <span
+            className="inline-flex items-center gap-2 rounded-full border px-4 py-2"
+            style={{
+              borderColor: "var(--accent-border)",
+              backgroundColor: "var(--accent-soft)",
+              color: "var(--accent)",
+            }}
+          >
+            <span
+              className="h-2 w-2 rounded-full"
+              style={{ backgroundColor: "var(--accent)" }}
+            />
+            <span className="text-xs font-semibold uppercase tracking-[0.2em]">
               My Journey
             </span>
-          </div>
+          </span>
 
-          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h2 className="mt-5 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
             Work{" "}
-            <span className="bg-gradient-to-r from-green-300 via-emerald-400 to-green-500 bg-clip-text text-transparent">
-              Experience
+            <span style={{ color: "var(--accent)" }}>
+              Experience.
             </span>
           </h2>
 
-          <div className="mx-auto mt-6 h-1 w-20 rounded-full bg-gradient-to-r from-green-300 to-emerald-600" />
+          <div
+            className="mx-auto mt-6 h-1 w-16 rounded-full"
+            style={{ backgroundColor: "var(--accent)" }}
+          />
 
-          <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-gray-400 sm:text-base">
+          <p
+            className="mx-auto mt-6 max-w-2xl text-sm leading-7 sm:text-base"
+            style={{ color: "var(--text-secondary)" }}
+          >
             My learning journey through internships, hands-on projects,
             frontend development, React, and problem solving.
           </p>
@@ -77,14 +81,16 @@ function Experience() {
           <div className="relative">
             {/* Timeline line */}
             <div
-              className="absolute bottom-5 left-[11px] top-5 w-px bg-gradient-to-b from-green-400/70 via-emerald-500/30 to-transparent md:left-1/2 md:-translate-x-1/2"
+              className="absolute bottom-5 left-[11px] top-5 w-px md:left-1/2 md:-translate-x-1/2"
+              style={{
+                background:
+                  "linear-gradient(to bottom, var(--accent), var(--accent-border), transparent)",
+              }}
               aria-hidden="true"
             />
 
-            <div className="space-y-10 md:space-y-14">
+            <div className="space-y-8 md:space-y-12">
               {workData.map((item, index) => {
-                const colors =
-                  accentColors[item.color] || accentColors.green;
                 const isLeft = index % 2 === 0;
 
                 return (
@@ -92,17 +98,12 @@ function Experience() {
                     key={`${item.company}-${item.role}-${index}`}
                     initial={{
                       opacity: 0,
-                      x: shouldReduceMotion ? 0 : isLeft ? -25 : 25,
-                      y: shouldReduceMotion ? 0 : 12,
+                      x: shouldReduceMotion ? 0 : isLeft ? -20 : 20,
+                      y: shouldReduceMotion ? 0 : 10,
                     }}
-                    whileInView={{
-                      opacity: 1,
-                      x: 0,
-                      y: 0,
-                    }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
                     transition={{
-                      duration: shouldReduceMotion ? 0.2 : 0.65,
-                      delay: shouldReduceMotion ? 0 : 0.08,
+                      duration: shouldReduceMotion ? 0.2 : 0.6,
                       ease: "easeOut",
                     }}
                     viewport={{ once: true, amount: 0.2 }}
@@ -113,7 +114,12 @@ function Experience() {
                     {/* Timeline marker */}
                     <div className="relative flex justify-center md:absolute md:left-1/2 md:top-8 md:-translate-x-1/2">
                       <span
-                        className={`relative z-10 mt-7 h-3 w-3 rounded-full ${colors.dot} ring-4 ring-[#080c0a] shadow-[0_0_16px_rgba(74,222,128,0.35)] md:mt-0`}
+                        className="relative z-10 mt-7 h-3 w-3 rounded-full ring-4 md:mt-0"
+                        style={{
+                          backgroundColor: "var(--accent)",
+                          boxShadow: "0 0 16px var(--accent-soft)",
+                          "--tw-ring-color": "var(--bg-primary)",
+                        }}
                       />
                     </div>
 
@@ -125,44 +131,75 @@ function Experience() {
                           : "md:col-start-2 md:col-end-3"
                       }`}
                     >
-                      <div
-                        className={`relative h-full overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045] hover:shadow-xl sm:p-7 ${colors.border} ${colors.glow}`}
+                      <article
+                        className="relative h-full overflow-hidden rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 sm:p-7"
+                        style={{
+                          backgroundColor: "var(--bg-card)",
+                          borderColor: "var(--border-color)",
+                        }}
                       >
-                        {/* Card accent */}
+                        {/* Accent edge */}
                         <div
-                          className={`absolute left-0 top-0 h-full w-[2px] ${colors.dot} opacity-60 transition-opacity duration-300 group-hover:opacity-100`}
+                          className="absolute bottom-0 left-0 top-0 w-[3px] opacity-70 transition-opacity duration-300 group-hover:opacity-100"
+                          style={{ backgroundColor: "var(--accent)" }}
                         />
 
                         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
                           <span
-                            className={`inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-black/20 px-3 py-1.5 text-xs font-medium ${colors.text}`}
+                            className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold"
+                            style={{
+                              borderColor: "var(--accent-border)",
+                              backgroundColor: "var(--accent-soft)",
+                              color: "var(--accent)",
+                            }}
                           >
-                            <span className={`h-1.5 w-1.5 rounded-full ${colors.dot}`} />
+                            <span
+                              className="h-1.5 w-1.5 rounded-full"
+                              style={{ backgroundColor: "var(--accent)" }}
+                            />
                             Experience {String(index + 1).padStart(2, "0")}
                           </span>
 
-                          <span className="rounded-lg border border-white/[0.07] bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-gray-400">
+                          <span
+                            className="rounded-lg border px-3 py-1.5 text-xs font-medium"
+                            style={{
+                              borderColor: "var(--border-color)",
+                              color: "var(--text-muted)",
+                            }}
+                          >
                             {item.duration}
                           </span>
                         </div>
 
-                        <h3 className="text-xl font-bold leading-snug text-white transition-colors duration-300 group-hover:text-green-100 sm:text-2xl">
+                        <h3
+                          className="text-xl font-bold leading-snug transition-colors duration-300 sm:text-2xl"
+                          style={{ color: "var(--text-primary)" }}
+                        >
                           {item.role}
                         </h3>
 
-                        <h4 className={`mt-2 text-base font-semibold ${colors.text}`}>
+                        <h4
+                          className="mt-2 text-base font-semibold"
+                          style={{ color: "var(--accent)" }}
+                        >
                           {item.company}
                         </h4>
 
-                        <div className="my-5 h-px w-full bg-gradient-to-r from-white/10 via-white/[0.04] to-transparent" />
+                        <div
+                          className="my-5 h-px w-full"
+                          style={{ backgroundColor: "var(--border-color)" }}
+                        />
 
-                        <p className="text-sm leading-7 text-gray-400 sm:text-base">
+                        <p
+                          className="text-sm leading-7 sm:text-base"
+                          style={{ color: "var(--text-secondary)" }}
+                        >
                           {item.description}
                         </p>
-                      </div>
+                      </article>
                     </div>
 
-                    {/* Empty opposite side on desktop */}
+                    {/* Opposite side on desktop */}
                     <div className="hidden md:block" />
                   </motion.div>
                 );
@@ -170,7 +207,10 @@ function Experience() {
             </div>
           </div>
         ) : (
-          <p className="py-12 text-center text-gray-400">
+          <p
+            className="py-12 text-center"
+            style={{ color: "var(--text-secondary)" }}
+          >
             Experience details will appear here soon.
           </p>
         )}
@@ -179,12 +219,16 @@ function Experience() {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: shouldReduceMotion ? 0.2 : 0.6 }}
           viewport={{ once: true }}
-          className="mt-16 text-center text-sm text-gray-500"
+          className="mt-14 text-center text-sm sm:mt-16"
+          style={{ color: "var(--text-muted)" }}
         >
           Every experience is a step forward.{" "}
-          <span className="font-medium text-green-400">
+          <span
+            className="font-semibold"
+            style={{ color: "var(--accent)" }}
+          >
             Keep learning. Keep growing.
           </span>
         </motion.p>

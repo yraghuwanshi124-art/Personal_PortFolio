@@ -9,116 +9,160 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="relative scroll-mt-20 overflow-hidden bg-[#080c0a] px-5 py-24 text-white sm:px-8 lg:py-32"
+      className="relative isolate scroll-mt-20 overflow-hidden px-5 py-24 sm:px-8 lg:py-32"
+      style={{
+        backgroundColor: "var(--bg-primary)",
+        color: "var(--text-primary)",
+      }}
     >
-      {/* Background glow */}
-      <div className="pointer-events-none absolute -right-40 top-20 h-80 w-80 rounded-full bg-green-500/[0.07] blur-[110px]" />
-      <div className="pointer-events-none absolute -left-40 bottom-10 h-80 w-80 rounded-full bg-emerald-400/[0.05] blur-[110px]" />
+      {/* Ambient background */}
+      <div
+        className="pointer-events-none absolute -right-40 top-20 -z-10 h-80 w-80 rounded-full blur-[110px]"
+        style={{ backgroundColor: "var(--accent-soft)" }}
+      />
+      <div
+        className="pointer-events-none absolute -left-40 bottom-10 -z-10 h-80 w-80 rounded-full blur-[110px]"
+        style={{ backgroundColor: "var(--accent-soft)" }}
+      />
 
       <div className="relative mx-auto max-w-7xl">
-        {/* Section Heading */}
+        {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: reduceMotion ? 0 : 30 }}
+          initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: reduceMotion ? 0 : 0.7, ease: "easeOut" }}
-          className="mb-16 text-center"
+          transition={{
+            duration: reduceMotion ? 0 : 0.65,
+            ease: "easeOut",
+          }}
+          className="mb-14 text-center sm:mb-16"
         >
-          <span className="mb-4 inline-flex rounded-full border border-green-400/20 bg-green-400/[0.07] px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-green-300">
+          <span
+            className="inline-flex rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em]"
+            style={{
+              borderColor: "var(--accent-border)",
+              backgroundColor: "var(--accent-soft)",
+              color: "var(--accent)",
+            }}
+          >
             What I work with
           </span>
 
-          <h2 className="text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
-            My <span className="text-green-400">Skills.</span>
+          <h2 className="mt-5 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
+            My <span style={{ color: "var(--accent)" }}>Skills.</span>
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-gray-400 sm:text-lg">
+          <p
+            className="mx-auto mt-5 max-w-2xl text-base leading-7 sm:text-lg"
+            style={{ color: "var(--text-secondary)" }}
+          >
             Technologies and tools I use to turn ideas into functional,
             responsive and user-friendly web experiences.
           </p>
 
           <motion.div
             initial={{ width: 0 }}
-            whileInView={{ width: 72 }}
+            whileInView={{ width: 64 }}
             viewport={{ once: true }}
-            transition={{ duration: reduceMotion ? 0 : 0.8, delay: 0.2 }}
-            className="mx-auto mt-7 h-1 rounded-full bg-green-400"
+            transition={{
+              duration: reduceMotion ? 0 : 0.7,
+              delay: 0.15,
+            }}
+            className="mx-auto mt-7 h-1 rounded-full"
+            style={{ backgroundColor: "var(--accent)" }}
           />
         </motion.div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Skills grid */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {skills.map((data, index) => {
             const Icon = data.icon;
 
             return (
-              <motion.div
+              <motion.article
                 key={data.title ?? index}
                 initial={{
                   opacity: 0,
-                  y: reduceMotion ? 0 : 35,
+                  y: reduceMotion ? 0 : 22,
                 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{
-                  duration: reduceMotion ? 0 : 0.6,
-                  delay: reduceMotion ? 0 : (index % 3) * 0.12,
+                  duration: reduceMotion ? 0 : 0.55,
+                  delay: reduceMotion ? 0 : (index % 3) * 0.08,
                   ease: "easeOut",
                 }}
-                whileHover={
-                  reduceMotion
-                    ? {}
-                    : {
-                        y: -8,
-                        transition: { duration: 0.25, ease: "easeOut" },
-                      }
-                }
-                className="group relative h-full overflow-hidden rounded-2xl border border-white/[0.08] bg-[#101612] p-6 transition-colors duration-300 hover:border-green-400/30 hover:bg-[#121b15] sm:p-7"
+                whileHover={reduceMotion ? {} : { y: -5 }}
+                className="group relative h-full overflow-hidden rounded-2xl border p-6 transition-colors duration-300 sm:p-7"
+                style={{
+                  backgroundColor: "var(--bg-card)",
+                  borderColor: "var(--border-color)",
+                }}
               >
-                {/* Hover glow */}
-                <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-green-400/0 blur-3xl transition-colors duration-500 group-hover:bg-green-400/10" />
+                {/* Accent line */}
+                <div
+                  className="absolute left-0 top-0 h-[2px] w-0 transition-all duration-300 group-hover:w-full"
+                  style={{ backgroundColor: "var(--accent)" }}
+                />
 
-                {/* Top accent */}
-                <div className="absolute left-0 top-0 h-[2px] w-0 bg-gradient-to-r from-green-300 to-emerald-600 transition-all duration-500 group-hover:w-full" />
+                {/* Soft hover glow */}
+                <div
+                  className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+                  style={{ backgroundColor: "var(--accent-soft)" }}
+                />
 
                 {/* Icon */}
                 <motion.div
-                  whileHover={
-                    reduceMotion
-                      ? {}
-                      : { rotate: 5, scale: 1.08 }
-                  }
+                  whileHover={reduceMotion ? {} : { scale: 1.06 }}
                   transition={{ duration: 0.2 }}
-                  className="relative mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-green-400/15 bg-green-400/[0.08] text-3xl text-green-400 transition-colors duration-300 group-hover:border-green-400/30 group-hover:bg-green-400/[0.13]"
+                  className="relative mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border"
+                  style={{
+                    borderColor: "var(--accent-border)",
+                    backgroundColor: "var(--accent-soft)",
+                    color: "var(--accent)",
+                  }}
                 >
-                  {Icon ? <Icon /> : null}
+                  {Icon ? <Icon size={27} /> : null}
                 </motion.div>
 
-                {/* Skill content */}
-                <h3 className="relative mb-3 text-xl font-bold text-white transition-colors duration-300 group-hover:text-green-300 sm:text-2xl">
+                {/* Content */}
+                <h3
+                  className="relative mb-3 text-xl font-bold transition-colors duration-300 sm:text-2xl"
+                  style={{ color: "var(--text-primary)" }}
+                >
                   {data.title}
                 </h3>
 
-                <p className="relative text-sm leading-7 text-gray-400 sm:text-base">
+                <p
+                  className="relative text-sm leading-7 sm:text-base"
+                  style={{ color: "var(--text-secondary)" }}
+                >
                   {data.description}
                 </p>
 
-                {/* Decorative corner */}
-                <div className="absolute bottom-5 right-5 h-2 w-2 rounded-full bg-green-400/20 transition-all duration-300 group-hover:scale-150 group-hover:bg-green-400" />
-              </motion.div>
+                {/* Corner detail */}
+                <div
+                  className="absolute bottom-5 right-5 h-2 w-2 rounded-full transition-transform duration-300 group-hover:scale-150"
+                  style={{ backgroundColor: "var(--accent)" }}
+                />
+              </motion.article>
             );
           })}
         </div>
 
-        {/* Bottom note */}
+        {/* Footer note */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: reduceMotion ? 0 : 0.7, delay: 0.3 }}
-          className="mt-12 text-center text-sm text-gray-500"
+          transition={{
+            duration: reduceMotion ? 0 : 0.6,
+            delay: 0.2,
+          }}
+          className="mt-12 text-center text-sm"
+          style={{ color: "var(--text-muted)" }}
         >
-          <span className="text-green-400">✳</span>{" "}
+          <span style={{ color: "var(--accent)" }}>✳</span>{" "}
           Continuously learning, building and improving.
         </motion.p>
       </div>
